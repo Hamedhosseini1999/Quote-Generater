@@ -3,10 +3,23 @@ const quoteText = document.getElementById("quote-text");
 const author = document.getElementById("author");
 const newQuoteBtn = document.getElementById("new-quote");
 const twitterBtn = document.getElementById("twitter");
+const loader = document.querySelector(".loader");
 let quotes = [];
 
+// Loading
+function loading() {
+  loader.hidden = false;
+  quoteContainer.hidden = true;
+}
+// Compeleted
+function compelet() {
+  loader.hidden = true;
+  quoteContainer.hidden = false;
+}
+loading();
 // Get single quote
 function getSingleQuote() {
+  loading();
   const quote = quotes[Math.floor(Math.random() * quotes.length)];
   if (!quote.author) {
     author.textContent = "Unknown";
@@ -19,6 +32,7 @@ function getSingleQuote() {
     quoteText.classList.remove("small-font");
   }
   quoteText.textContent = quote.text;
+  compelet();
 }
 
 // fetch to Api
@@ -43,3 +57,5 @@ newQuoteBtn.addEventListener("click", getQuote);
 twitterBtn.addEventListener("click", tweet);
 
 getQuote();
+
+// Compelete
