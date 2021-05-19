@@ -8,8 +8,17 @@ let quotes = [];
 // Get single quote
 function getSingleQuote() {
   const quote = quotes[Math.floor(Math.random() * quotes.length)];
+  if (!quote.author) {
+    author.textContent = "Unknown";
+  } else {
+    author.textContent = quote.author;
+  }
+  if (quote.length > 150) {
+    quoteText.classList.add("small-font ");
+  } else {
+    quoteText.classList.remove("small-font");
+  }
   quoteText.textContent = quote.text;
-  author.textContent = quote.author;
 }
 // fetch to Api
 async function getQuote() {
