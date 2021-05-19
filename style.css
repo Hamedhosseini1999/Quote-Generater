@@ -58,7 +58,7 @@ button {
   outline: none;
   font-size: 17px;
   /* height: 25px; */
-  padding: 5px 15px;
+  padding: 10px 20px;
   border-radius: 3px;
   box-shadow: 0 10px 0px rgba(255, 255, 255, 0.35);
 }
@@ -78,6 +78,69 @@ button:active {
 button:hover .fa-twitter {
   color: #1a84ad;
 }
+
+/* Loading  */
+.loader {
+  height: 100px;
+  width: 100px;
+  position: relative;
+}
+.loader__container {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  animation: spin 1s linear infinite;
+}
+.loader__container__item {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #c2d076;
+  animation: oscillate 1.2s linear infinite;
+}
+.loader__container:nth-child(2) {
+  transform: rotate(120deg);
+  animation: spin2 1s linear infinite;
+}
+.loader__container:nth-child(3) {
+  transform: rotate(240deg);
+  animation: spin3 1s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin2 {
+  100% {
+    transform: rotate(480deg);
+  }
+}
+@keyframes spin3 {
+  100% {
+    transform: rotate(600deg);
+  }
+}
+@keyframes oscillate {
+  0% {
+    width: 24px;
+    height: 24px;
+  }
+  20% {
+    width: 0;
+    height: 0;
+    margin: 10px;
+  }
+  100% {
+    filter: hue-rotate(300deg);
+  }
+}
+
+/* Media Queries */
 
 @media screen and (max-width: 900px) {
   .quote-container {
@@ -104,6 +167,7 @@ button:hover .fa-twitter {
   button {
     font-size: 15px;
     box-shadow: 0 10px 0px rgba(255, 255, 255, 0.35);
+    padding: 5px 15px;
   }
 }
 @media screen and (max-width: 320px) {
