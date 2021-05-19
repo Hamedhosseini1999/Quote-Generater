@@ -20,10 +20,12 @@ function getSingleQuote() {
   }
   quoteText.textContent = quote.text;
 }
+
 // fetch to Api
 async function getQuote() {
   try {
-    const response = await fetch("https://type.fit/api/quotes");
+    const api = "https://type.fit/api/quotes";
+    const response = await fetch(api);
     quotes = await response.json();
     getSingleQuote();
   } catch (error) {
@@ -31,7 +33,13 @@ async function getQuote() {
   }
 }
 
-getQuote();
+async function tweet() {
+  const apiTweet = `https://twitter.com/intent/tweet?text = ${quoteText.textContent} - ${author.textContent}`;
+  window.open(apiTweet, "_blank");
+}
 
 // Add Event Listener
 newQuoteBtn.addEventListener("click", getQuote);
+twitterBtn.addEventListener("click", tweet);
+
+getQuote();
