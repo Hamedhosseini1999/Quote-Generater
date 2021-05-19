@@ -32,3 +32,6 @@ async function getQuote() {
 }
 
 getQuote();
+
+// Add Event Listener
+newQuoteBtn.addEventListener("click", getQuote);
